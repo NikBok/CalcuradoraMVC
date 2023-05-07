@@ -1,0 +1,17 @@
+using Microsoft. ;
+using Microsoft.AspNetCore;
+
+namespace CalcuradoraMVC
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateWebHostBuilder(args).Build().Run();
+
+        }
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
+}
