@@ -160,3 +160,15 @@ Calculadora.prototype.EnvioAControlador = function (resultado, expresion) {
 }
 var calc = new Calculadora();
 calc.addListener();
+const form = document.querySelector('.login-form');
+const inputs = form.querySelectorAll('input');
+
+inputs.forEach(input => {
+    input.addEventListener('focus', () => {
+        input.parentElement.querySelector('.underline').style.backgroundColor = 'blue';
+    });
+
+    input.addEventListener('blur', () => {
+        input.parentElement.querySelector('.underline').style.backgroundColor = 'transparent';
+    });
+});
