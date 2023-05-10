@@ -19,9 +19,10 @@ namespace CalcuradoraMVC.Repositories
             _context.SaveChanges();
         }
 
-        public IEnumerable<Operations> GetOperations()
+        public IEnumerable<Operations> GetOperations(int? userId)
         {
-            return _context.Operaciones.ToList();
+            return _context.Operaciones.Where(o => o.UserId == userId).ToList();
         }
+
     }
 }

@@ -8,7 +8,7 @@ namespace CalcuradoraMVC.Repositories
 {
     public interface IHistorialRepository
     {
-        IEnumerable<Operations> GetOperations();
+        IEnumerable<Operations> GetOperations(int?  userId);
         void DeleteOperation(int id);
     }
 }

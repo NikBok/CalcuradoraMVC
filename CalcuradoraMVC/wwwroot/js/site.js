@@ -93,7 +93,7 @@ Calculadora.prototype.eraseOne = function () {
 Calculadora.prototype.resolver = function () {
     try {
         this.resultado = this.expresion;
-        var result = new Function("return " + this.expresion);        
+        var result = new Function("return " + this.expresion);
         this.setResult(result());
         this.expresion = result().toString();
         this.EnvioAControlador(this.expresion, this.resultado);
@@ -142,11 +142,25 @@ Calculadora.prototype.buttonClicked = function (event) {
 };
 
 Calculadora.prototype.EnvioAControlador = function (resultado, expresion) {
+    $.ajax({
+        url: '/Home/GetSessionValue',
+        type: 'GET',
+        success: function (data) {
+            var sessionValue = JSON.parse(data);
+            guardarOp(sessionValue, resultado, expresion);
+        }, error: function (xhr, status, error) {
+            // Se ejecuta si hubo un error en la llamada
+            alert('Hubo un error en la llamada:', status, error);
+        }
+    });
+
+}
+function guardarOp(sessionValue, resultado, expresion) {
     $.ajax(
         {
-            url: '/Home/SaveOperations',
+            url: '/Calculadora/SaveOperations',
             type: 'POST',
-            data: JSON.stringify({ Expresion: expresion, Resultado: resultado }),
+            data: JSON.stringify({ Expresion: expresion, Resultado: resultado, UserId: sessionValue }),
             contentType: 'application/json',
             success: function (data) {
                 // Se ejecuta si la llamada se realizó correctamente
@@ -158,6 +172,7 @@ Calculadora.prototype.EnvioAControlador = function (resultado, expresion) {
             }
         });
 }
+
 var calc = new Calculadora();
 calc.addListener();
 const form = document.querySelector('.login-form');
@@ -172,3 +187,5 @@ inputs.forEach(input => {
         input.parentElement.querySelector('.underline').style.backgroundColor = 'transparent';
     });
 });
+
+

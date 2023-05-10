@@ -8,9 +8,9 @@ namespace CalcuradoraMVC.Controllers
 {
     public class CalculadoraController : Controller
     {
-        private IOperationsRepository _repository;
+        private ICalculadoraRepository _repository;
 
-        public CalculadoraController(IOperationsRepository repository)
+        public CalculadoraController(ICalculadoraRepository repository)
         {
             _repository = repository;
         }
@@ -23,7 +23,10 @@ namespace CalcuradoraMVC.Controllers
         [HttpPost]
         public void SaveOperations([FromBody] Operations datos)
         {
-            _repository.SaveAnOperation(datos);
+            if (datos != null)
+            {
+                _repository.SaveAnOperation(datos);
+            }           
         }
 
 

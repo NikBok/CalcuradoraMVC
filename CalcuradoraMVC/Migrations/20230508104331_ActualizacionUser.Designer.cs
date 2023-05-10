@@ -2,6 +2,7 @@
 using CalcuradoraMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CalcuradoraMVC.Migrations
 {
     [DbContext(typeof(CalculadoraContext))]
-    partial class CalculadoraContextModelSnapshot : ModelSnapshot
+    [Migration("20230508104331_ActualizacionUser")]
+    partial class ActualizacionUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.4");

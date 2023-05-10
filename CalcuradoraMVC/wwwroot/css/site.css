@@ -1,9 +1,4 @@
-/* Estilos para la calculadora */
 
-.navbar-collapse.collapse.d-sm-inline-flex.justify-content-between a {
-    color: blue; 
-    font-size: 16px;
-}
 
 
 
@@ -145,7 +140,7 @@ input:focus + .underline {
 
 button[type="submit"] {
     display: block;
-    margin: 0 auto;
+    margin-top:30px;
     padding: 10px 20px;
     border: none;
     border-radius: 3px;
@@ -158,4 +153,13 @@ button[type="submit"] {
 
     button[type="submit"]:hover {
         transform: scale(1.05);
+    }
+.btn-primaryIN {
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.2s ease-in-out;
+}
+
+    .btn-primaryIN:hover {
+        background-color: #0069d9;
     }

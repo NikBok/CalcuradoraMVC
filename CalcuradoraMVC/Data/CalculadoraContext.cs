@@ -12,6 +12,13 @@ namespace CalcuradoraMVC.Data
 
         public DbSet<Operations> Operaciones { get; set; }
         public DbSet<User> Usuarios { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>()
+                        .HasIndex(u => u.Username)
+                        .IsUnique();
+        }
+
     }
 
 }

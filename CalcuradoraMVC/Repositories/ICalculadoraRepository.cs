@@ -2,7 +2,7 @@
 
 namespace CalcuradoraMVC.Repositories
 {
-    public interface IOperationsRepository
+    public interface ICalculadoraRepository
     {
         void SaveAnOperation(Operations operacion);
     }

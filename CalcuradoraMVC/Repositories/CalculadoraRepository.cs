@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 namespace CalcuradoraMVC.Repositories
 {
-    public class OperationRepository : IOperationsRepository
+    public class CalculadoraRepository : ICalculadoraRepository
     {
         private CalculadoraContext _context;
-        public OperationRepository(CalculadoraContext context)
+        public CalculadoraRepository(CalculadoraContext context)
         {
             _context = context;
         }

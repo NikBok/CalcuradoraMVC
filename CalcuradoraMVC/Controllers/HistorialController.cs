@@ -16,7 +16,8 @@ namespace CalcuradoraMVC.Controllers
         }
         public IActionResult Index()
         {
-            return View(_repository.GetOperations());
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            return View(_repository.GetOperations(userId));
         }
         
         public IActionResult Delete(int id)
