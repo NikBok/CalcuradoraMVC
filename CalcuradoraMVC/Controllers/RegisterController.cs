@@ -26,9 +26,16 @@ namespace CalcuradoraMVC.Controllers
 
                 return RedirectToAction("Index", "Calculadora");
             }
-            else
+            else if(_repository.AlreadyExists(theUser) == true)
             {
                 ViewBag.ErrorMessage = "Nombre de usuario ya existente";
+                return View("Index");
+            }else
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    ViewBag.ErrorMessage += error.ErrorMessage ;
+                }
                 return View("Index");
             }
         }
