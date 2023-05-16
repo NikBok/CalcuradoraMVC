@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CalcuradoraMVC.Migrations
 {
     [DbContext(typeof(CalculadoraContext))]
-    [Migration("20230508104331_ActualizacionUser")]
-    partial class ActualizacionUser
+    [Migration("20230512114944_Users")]
+    partial class Users
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

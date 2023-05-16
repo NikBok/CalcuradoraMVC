@@ -2,8 +2,6 @@
 using CalcuradoraMVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using CalcuradoraMVC.Models;
-using CalcuradoraMVC.Repositories;
 using System.Text.Json;
 
 namespace CalcuradoraMVC.Controllers
@@ -18,6 +16,7 @@ namespace CalcuradoraMVC.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.Remove("UserId");
             return View();
         }
         [HttpPost]
@@ -43,6 +42,11 @@ namespace CalcuradoraMVC.Controllers
         {
             int? sessionValue = HttpContext.Session.GetInt32("UserId");
             return Json(sessionValue, new JsonSerializerOptions());
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("UserId");
+            return RedirectToAction("Index","Home");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

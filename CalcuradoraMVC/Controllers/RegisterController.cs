@@ -21,9 +21,8 @@ namespace CalcuradoraMVC.Controllers
             if (ModelState.IsValid && _repository.AlreadyExists(theUser) == false)
             {
                 _repository.AddUser(theUser);
-
-                HttpContext.Session.SetInt32("UserId", theUser.Id);
-
+                User user = _repository.IsCorrect(theUser);
+                HttpContext.Session.SetInt32("UserId", user.Id);
                 return RedirectToAction("Index", "Calculadora");
             }
             else if(_repository.AlreadyExists(theUser) == true)

@@ -4,7 +4,7 @@
 
 namespace CalcuradoraMVC.Migrations
 {
-    public partial class ADDUsers : Migration
+    public partial class Users : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,12 @@ namespace CalcuradoraMVC.Migrations
                 name: "IX_Operaciones_UserId",
                 table: "Operaciones",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_Username",
+                table: "Usuarios",
+                column: "Username",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

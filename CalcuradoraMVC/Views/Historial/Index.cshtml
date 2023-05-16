@@ -4,38 +4,48 @@
     HttpContext context = HttpContextAccessor.HttpContext;
     @if (context.Session.GetInt32("UserId").HasValue)
     {
-        <table class="table table-custom">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Operación</th>
-                    <th>Resultado</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var operacion in Lista)
-                {
+        <div class="vistaHistorial">
+        <table class="table-custom">
+                <thead style="background-color: #D9B382;">
                     <tr>
-                        <td>@operacion.Id</td>
-                        <td>@operacion.Expresion</td>
+                        <th>ID</th>
+                        <th>Operación</th>
+                        <th>Resultado</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            <tbody>
+                
+                    @foreach (var operacion in Lista)
+                    {
+                    <tr>
+                         <td >@operacion.Id </td>
+                         <td>@operacion.Expresion</td>
                         <td>@operacion.Resultado</td>
                         <td>
                             <form asp-action="Delete" method="post" onsubmit="return confirm('¿Está seguro que desea eliminar esta operación?');">
                                 <input type="hidden" name="id" value="@operacion.Id" />
-                                <button type="submit" class="btn btn-danger btn-eliminar">Eliminar</button>
+                                    <button style="margin :auto" type="submit" class="btn btn-danger btn-eliminar">Eliminar</button>
                             </form>
                         </td>
                     </tr>
-                }
+                    }
+                
             </tbody>
         </table>
+        </div>
+
     }
     else
     {
-        <p>No puedes ver el historial hasta que no hayas iniciado Session</p>
-        <a class="btn btn-primaryIN" href="@Url.Action("Index", "Home")">
-            Iniciar Sesión
-        </a>
+        <div class="vistaHistorialErr">
+            <div class="bloqueHistorial">
+                <p>No puedes ver el historial hasta que no hayas iniciado Sesión</p>
+                <a class="btn btn-primaryIN" href="@Url.Action("Index", "Home")">
+                    Iniciar Sesión
+                </a>
+            </div>
+        </div>
     }
 }
 

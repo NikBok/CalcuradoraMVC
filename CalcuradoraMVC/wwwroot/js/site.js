@@ -61,6 +61,7 @@ Calculadora.prototype.square = function () {
     var number = document.getElementById("result").innerHTML;
     var resultado = Math.pow(number, 2);
     this.expresion = resultado;
+    this.EnvioAControlador(this.expresion.toString(), number + "^2");
     this.setResult(this.expresion);
 
 };
@@ -68,6 +69,14 @@ Calculadora.prototype.cube = function () {
     var number = document.getElementById("result").innerHTML;
     var resultado = Math.pow(number, 3);
     this.expresion = resultado;
+    this.EnvioAControlador(this.expresion.toString(), number + "^3"); 
+    this.setResult(this.expresion);
+};
+Calculadora.prototype.inverse = function () {
+    var number = document.getElementById("result").innerHTML;
+    var resultado = number * (-1);
+    this.expresion = resultado;
+    this.EnvioAControlador(this.expresion.toString(), +"-" + number);
     this.setResult(this.expresion);
 };
 
@@ -82,6 +91,7 @@ Calculadora.prototype.getFactorial = function () {
     var res = this.getResult();
     var n = this.factorial(res);
     this.expresion = n;
+    this.EnvioAControlador(this.expresion.toString(), res+"!");
     this.setResult(this.expresion);
 };
 Calculadora.prototype.eraseOne = function () {
@@ -136,8 +146,10 @@ Calculadora.prototype.buttonClicked = function (event) {
         this.addOperators("Math." + valor + "(");
     } else if (valor === "=") {
         this.resolver();
-    } else if (valor === "Reset") {
+    } else if (valor === "AC") {
         this.reset();
+    } else if (valor === "+/-") {
+        this.inverse();
     }
 };
 
